@@ -215,7 +215,7 @@ class TestCORSOptions : XCTestCase {
         router.all("/cors", middleware: CORS(options: options1))
         router.get("/cors") { _, response, next in
             do {
-                try response.end("CORS with options")
+                try response.send("CORS with options").end()
             }
             catch {}
             next()
@@ -224,7 +224,7 @@ class TestCORSOptions : XCTestCase {
         let pattern = "http?://([-\\w\\.]+)+(:\\d+)?(/([\\w/_\\.]*(\\?\\S+)?)?)?"
         do {
             #if os(Linux)
-                let regex = NSRegularExpression(pattern)
+                let regex = try NSRegularExpression(pattern: pattern, options: [])
             #else
                 let regex = try RegularExpression(pattern: pattern)
             #endif
@@ -235,7 +235,7 @@ class TestCORSOptions : XCTestCase {
         catch {}
         router.get("/regex") { _, response, next in
             do {
-                try response.end("CORS with options")
+                try response.send("CORS with options").end()
             }
             catch {}
             next()
@@ -246,7 +246,7 @@ class TestCORSOptions : XCTestCase {
         router.all("/set", middleware: CORS(options: options3))
         router.get("/set") { _, response, next in
             do {
-                try response.end("CORS with options")
+                try response.send("CORS with options").end()
             }
             catch {}
             next()

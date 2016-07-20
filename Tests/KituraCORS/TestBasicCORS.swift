@@ -127,7 +127,7 @@ class TestBasicCORS : XCTestCase {
         router.all(middleware: CORS(options: Options()))
         router.get("/cors") { _, response, next in
             do {
-                try response.end("Basic CORS")
+                try response.send("Basic CORS").end()
             }
             catch {}
             next()
