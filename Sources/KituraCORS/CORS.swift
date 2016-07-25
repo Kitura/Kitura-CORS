@@ -76,7 +76,6 @@ public class CORS: RouterMiddleware {
     private func isAllowed(origin: String) -> Bool {
         var allowed = false
         switch options.allowedOrigin {
-        case .all: break
         case .set(let set):
             if set.contains(origin) {
                 allowed = true
@@ -89,6 +88,7 @@ public class CORS: RouterMiddleware {
             if regex.numberOfMatches(in: origin, options: [], range: NSRange(location: 0, length: origin.characters.count)) == 1 {
                 allowed = true
             }
+        default: break
         }
         return allowed
     }
