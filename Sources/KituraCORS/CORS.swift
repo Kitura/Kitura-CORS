@@ -15,8 +15,6 @@
  */
 
 import Kitura
-import LoggerAPI
-
 import Foundation
 
 public class CORS: RouterMiddleware {
