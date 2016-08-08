@@ -211,7 +211,7 @@ class TestCORSOptions : XCTestCase {
     static func setupRouter() -> Router {
         let router = Router()
         
-        let options1 = Options(allowedOrigin: .origin("http://api.bob.com"), methods: ["GET","PUT"], credentials: true, allowedHeaders: ["Content-Type"], exposedHeaders: ["Content-Type","X-Custom-Header"], maxAge: 10)
+        let options1 = Options(allowedOrigin: .origin("http://api.bob.com"), credentials: true, methods: ["GET","PUT"], allowedHeaders: ["Content-Type"], maxAge: 10, exposedHeaders: ["Content-Type","X-Custom-Header"])
         router.all("/cors", middleware: CORS(options: options1))
         router.get("/cors") { _, response, next in
             do {
@@ -224,12 +224,12 @@ class TestCORSOptions : XCTestCase {
         let pattern = "http?://([-\\w\\.]+)+(:\\d+)?(/([\\w/_\\.]*(\\?\\S+)?)?)?"
         do {
             #if os(Linux)
-                let regex = try NSRegularExpression(pattern: pattern, options: [])
+                let regex = try RegularExpression(pattern: pattern, options: [])
             #else
-                let regex = try RegularExpression(pattern: pattern)
+                let regex = try NSRegularExpression(pattern: pattern)
             #endif
             
-            let options2 = Options(allowedOrigin: .regex(regex), methods: ["GET,PUT"], credentials: false, allowedHeaders: ["Content-Type"])
+            let options2 = Options(allowedOrigin: .regex(regex), credentials: false, methods: ["GET,PUT"], allowedHeaders: ["Content-Type"])
             router.get("/regex", middleware: CORS(options: options2))
         }
         catch {}
