@@ -21,8 +21,8 @@ public enum AllowedOrigins {
     case set(Set<String>)
     case origin(String)
     #if os(Linux)
-    case regex(NSRegularExpression)
-    #else
     case regex(RegularExpression)
+    #else
+    case regex(NSRegularExpression)
     #endif
 }
