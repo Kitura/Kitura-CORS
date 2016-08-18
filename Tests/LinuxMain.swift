@@ -16,7 +16,7 @@
 
 import XCTest
 
-@testable import KituraCORSTestSuite
+@testable import KituraCORSTests
 
 XCTMain([
 	testCase(TestBasicCORS.allTests),
