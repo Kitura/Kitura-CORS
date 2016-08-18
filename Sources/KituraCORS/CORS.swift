@@ -25,7 +25,7 @@ public class CORS: RouterMiddleware {
         self.options = options
     }
     
-    public func handle(request: RouterRequest, response: RouterResponse, next: () -> Void) throws {
+    public func handle(request: RouterRequest, response: RouterResponse, next: @escaping () -> Void) throws {
         guard let _ = request.headers["Origin"] else {
             next()
             return
