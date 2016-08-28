@@ -50,7 +50,7 @@ extension KituraTest {
         }
     }
 
-    func performRequest(_ method: String, path: String, callback: ClientRequest.Callback, headers: [String: String]? = nil, requestModifier: ((ClientRequest) -> Void)? = nil) {
+    func performRequest(_ method: String, path: String, callback: @escaping ClientRequest.Callback, headers: [String: String]? = nil, requestModifier: ((ClientRequest) -> Void)? = nil) {
         var allHeaders = [String: String]()
         if  let headers = headers  {
             for  (headerName, headerValue) in headers  {
@@ -58,7 +58,9 @@ extension KituraTest {
             }
         }
         allHeaders["Content-Type"] = "text/plain"
-        let req = HTTP.request([.method(method), .hostname("localhost"), .port(8090), .path(path), .headers(allHeaders)], callback: callback)
+        let options: [ClientRequest.Options] =
+                [.method(method), .hostname("localhost"), .port(8090), .path(path), .headers(allHeaders)]
+        let req = HTTP.request(options, callback: callback)
         if let requestModifier = requestModifier {
             requestModifier(req)
         }
