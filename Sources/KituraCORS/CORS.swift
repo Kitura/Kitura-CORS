@@ -17,14 +17,32 @@
 import Kitura
 import Foundation
 
+// MARK CORS
+
+/// Cross-Origin Resource Sharing [CORS](https://www.w3.org/TR/cors/) middleware.
 public class CORS: RouterMiddleware {
     
-    private let options : Options
+    private let options: Options
     
+    /// Initialize an instance of `CORS`.
+    ///
+    /// - Parameter options: The options to configure CORS.
     public init(options : Options) {
         self.options = options
     }
     
+    /// Handle an incoming request: set the CORS headers in the response.
+    ///
+    /// - Parameter request: The `RouterRequest` object used to get information
+    ///                     about the request.
+    /// - Parameter response: The `RouterResponse` object used to respond to the
+    ///                       request.
+    /// - Parameter next: The closure to invoke to enable the Router to check for
+    ///                  other handlers or middleware to work with this request.
+    ///
+    /// - Throws: Any `ErrorType`. If an error is thrown, processing of the request
+    ///          is stopped, the error handlers, if any are defined, will be invoked,
+    ///          and the user will get a response with a status code of 500.
     public func handle(request: RouterRequest, response: RouterResponse, next: @escaping () -> Void) throws {
         guard let _ = request.headers["Origin"] else {
             next()

@@ -16,13 +16,27 @@
 
 import Foundation
 
+// MARK AllowedOrigins
+
+/// Type alias for `AllowedOrigins.regex`.
+#if os(Linux)
+    public typealias AllowedOriginsRegExType = RegularExpression
+#else
+    public typealias AllowedOriginsRegExType = NSRegularExpression
+#endif
+
+/// A configuration of the Access-Control-Allow-Origin CORS response header.
 public enum AllowedOrigins {
+    /// All origins are allowed. Access-Control-Allow-Origin will be set to *.
     case all
+    
+    /// A set of allowed origins.
     case set(Set<String>)
+    
+    /// A single allowed origin.
     case origin(String)
-    #if os(Linux)
-    case regex(RegularExpression)
-    #else
-    case regex(NSRegularExpression)
-    #endif
+    
+    /// A regular expression that defines allowed origins.
+    case regex(AllowedOriginsRegExType)
 }
+
