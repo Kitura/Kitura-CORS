@@ -27,11 +27,11 @@ public class CORS: RouterMiddleware {
     /// Initialize an instance of `CORS`.
     ///
     /// - Parameter options: The options to configure CORS.
-    public init(options : Options) {
+    public init(options: Options) {
         self.options = options
     }
     
-    /// Handle an incoming request: set the CORS headers in the response.
+    /// Handle an incoming request by setting the CORS headers in the response.
     ///
     /// - Parameter request: The `RouterRequest` object used to get information
     ///                     about the request.

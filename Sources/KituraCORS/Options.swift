@@ -24,9 +24,9 @@ public struct Options {
     public var allowedOrigin: AllowedOrigins
     
     /// An indication as to whether to set the Access-Control-Allow-Credentials header.
-    public var credentials : Bool
+    public var credentials: Bool
     
-    /// An array of methods to be passed in Access-Control-Allow-Methods header.
+    /// An array of methods to be passed in the Access-Control-Allow-Methods header.
     public var methods: [String]
     
     /// An array of allowed headers to configure the Access-Control-Allow-Headers header.
@@ -41,7 +41,7 @@ public struct Options {
     /// If not set, the header is omitted.
     public var exposedHeaders: [String]?
     
-    /// A boolean that defines whether to pass the CORS preflight response to the next handler.
+    /// A boolean that defines whether or not to pass the CORS preflight response to the next handler.
     public var preflightContinue: Bool
     
     /// Initialize an instance of `Options`.
@@ -49,7 +49,7 @@ public struct Options {
     /// - Parameter allowedOrigin: A configuration of the Access-Control-Allow-Origin response header.
     /// - Parameter credentials: An indication as to whether to set the 
     ///                         Access-Control-Allow-Credentials header.
-    /// - Parameter methods: An array of methods to be passed in Access-Control-Allow-Methods header.
+    /// - Parameter methods: An array of methods to be passed in the Access-Control-Allow-Methods header.
     /// - Parameter allowedHeaders: An array of allowed headers to configure the 
     ///                         Access-Control-Allow-Headers header.
     /// - Parameter maxAge: An integer to set the Access-Control-Allow-Max-Age header.
