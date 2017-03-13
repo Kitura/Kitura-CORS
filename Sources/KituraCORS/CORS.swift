@@ -96,8 +96,8 @@ public class CORS: RouterMiddleware {
             if set.contains(origin) {
                 allowed = true
             }
-        case .origin(let origin):
-            if origin == origin {
+        case .origin(let allowedOrigin):
+            if origin == allowedOrigin {
                 allowed = true
             }
         case .regex(let regex):
