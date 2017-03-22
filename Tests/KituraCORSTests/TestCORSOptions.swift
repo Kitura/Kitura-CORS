@@ -28,7 +28,7 @@ import KituraNet
 #endif
 
 class TestCORSOptions : XCTestCase {
-    
+
     static var allTests : [(String, (TestCORSOptions) -> () throws -> Void)] {
         return [
             ("testSimple", testSimple),
@@ -37,11 +37,11 @@ class TestCORSOptions : XCTestCase {
             ("testSimpleWithSet", testSimpleWithSet),
         ]
     }
-    
+
     override func tearDown() {
         doTearDown()
     }
-    
+
     let router = TestCORSOptions.setupRouter()
     func testSimple() {
         performServerTest(router) { expectation in
@@ -57,14 +57,14 @@ class TestCORSOptions : XCTestCase {
                     return
                 }
                 XCTAssertEqual(originHeader, "http://api.bob.com")
-                
+
                 //credentials
                 XCTAssertNotNil(response!.headers["Access-Control-Allow-Credentials"], "No allow credentials header")
                 guard let credentials = response!.headers["Access-Control-Allow-Credentials"]?.first else {
                     return
                 }
                 XCTAssertEqual(credentials, "true")
-                
+
                 do {
                     guard let body = try response!.readString() else {
                         XCTFail("No response body")
@@ -79,7 +79,7 @@ class TestCORSOptions : XCTestCase {
             }, headers: ["Origin" : "http://api.bob.com"])
         }
     }
-    
+
     func testPreflight() {
         performServerTest(router) { expectation in
             self.performRequest("options", path:"/cors", callback: {response in
@@ -94,42 +94,42 @@ class TestCORSOptions : XCTestCase {
                     return
                 }
                 XCTAssertEqual(originHeader, "http://api.bob.com")
-                
+
                 // credentials
                 XCTAssertNotNil(response!.headers["Access-Control-Allow-Credentials"], "No allow credentials header")
                 guard let credentials = response!.headers["Access-Control-Allow-Credentials"]?.first else {
                     return
                 }
                 XCTAssertEqual(credentials, "true")
-                
+
                 // methods
                 XCTAssertNotNil(response!.headers["Access-Control-Allow-Methods"], "No allow methods header")
                 guard let methods = response!.headers["Access-Control-Allow-Methods"]?.first else {
                     return
                 }
                 XCTAssertEqual(methods, "GET,PUT")
-                
+
                 //allow headers
                 XCTAssertNotNil(response!.headers["Access-Control-Allow-Headers"], "No allow headers header")
                 guard let headers = response!.headers["Access-Control-Allow-Headers"]?.first else {
                     return
                 }
                 XCTAssertEqual(headers, "Content-Type")
-                
+
                 // maxAge
                 XCTAssertNotNil(response!.headers["Access-Control-Max-Age"], "No Max Age header")
                 guard let maxAge = response!.headers["Access-Control-Max-Age"]?.first else {
                     return
                 }
                 XCTAssertEqual(maxAge, "10")
-                
+
                 // expose headers
                 XCTAssertNotNil(response!.headers["Access-Control-Expose-Headers"], "No expose headers header")
                 guard let exposeHeaders = response!.headers["Access-Control-Expose-Headers"]?.first else {
                     return
                 }
                 XCTAssertEqual(exposeHeaders, "Content-Type,X-Custom-Header")
-                
+
                 do {
                     if let _ = try response!.readString() {
                         XCTFail("Got response body for preflight")
@@ -140,8 +140,8 @@ class TestCORSOptions : XCTestCase {
             }, headers: ["Origin" : "http://api.bob.com", "Access-Control-Request-Method" : "PUT", "Access-Control-Request-Headers" : "X-Custom-Header"])
         }
     }
-    
-    
+
+
     func testSimpleWithRegEx() {
         performServerTest(router) { expectation in
             self.performRequest("get", path:"/regex", callback: {response in
@@ -156,10 +156,10 @@ class TestCORSOptions : XCTestCase {
                     return
                 }
                 XCTAssertEqual(originHeader, "http://api.bob.com")
-                
+
                 //credentials
                 XCTAssertNil(response!.headers["Access-Control-Allow-Credentials"], "Allow credentials header shouldn't be set")
-               
+
                 do {
                     guard let body = try response!.readString() else {
                         XCTFail("No response body")
@@ -189,10 +189,10 @@ class TestCORSOptions : XCTestCase {
                     return
                 }
                 XCTAssertEqual(originHeader, "http://api.bob.com")
-                
+
                 //credentials
                 XCTAssertNil(response!.headers["Access-Control-Allow-Credentials"], "Allow credentials header shouldn't be set")
-                
+
                 do {
                     guard let body = try response!.readString() else {
                         XCTFail("No response body")
@@ -210,7 +210,7 @@ class TestCORSOptions : XCTestCase {
 
     static func setupRouter() -> Router {
         let router = Router()
-        
+
         let options1 = Options(allowedOrigin: .origin("http://api.bob.com"), credentials: true, methods: ["GET","PUT"], allowedHeaders: ["Content-Type"], maxAge: 10, exposedHeaders: ["Content-Type","X-Custom-Header"])
         router.all("/cors", middleware: CORS(options: options1))
         router.get("/cors") { _, response, next in
@@ -220,15 +220,11 @@ class TestCORSOptions : XCTestCase {
             catch {}
             next()
         }
-        
+
         let pattern = "http?://([-\\w\\.]+)+(:\\d+)?(/([\\w/_\\.]*(\\?\\S+)?)?)?"
         do {
-            #if os(Linux)
-                let regex = try RegularExpression(pattern: pattern, options: [])
-            #else
-                let regex = try NSRegularExpression(pattern: pattern)
-            #endif
-            
+            let regex = try AllowedOriginsRegExType(pattern: pattern, options: [])
+
             let options2 = Options(allowedOrigin: .regex(regex), credentials: false, methods: ["GET,PUT"], allowedHeaders: ["Content-Type"])
             router.get("/regex", middleware: CORS(options: options2))
         }
@@ -240,7 +236,7 @@ class TestCORSOptions : XCTestCase {
             catch {}
             next()
         }
-        
+
         let origins : Set = ["http://api.bob.com", "http://www.ibm.com"]
         let options3 = Options(allowedOrigin: .set(origins))
         router.all("/set", middleware: CORS(options: options3))

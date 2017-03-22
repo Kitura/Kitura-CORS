@@ -20,7 +20,11 @@ import Foundation
 
 /// Type alias for `AllowedOrigins.regex`.
 #if os(Linux)
+#if swift(>=3.1)
+    public typealias AllowedOriginsRegExType = NSRegularExpression
+    #else
     public typealias AllowedOriginsRegExType = RegularExpression
+#endif
 #else
     public typealias AllowedOriginsRegExType = NSRegularExpression
 #endif
@@ -29,14 +33,13 @@ import Foundation
 public enum AllowedOrigins {
     /// All origins are allowed. Access-Control-Allow-Origin will be set to *.
     case all
-    
+
     /// A set of allowed origins.
     case set(Set<String>)
-    
+
     /// A single allowed origin.
     case origin(String)
-    
+
     /// A regular expression that defines allowed origins.
     case regex(AllowedOriginsRegExType)
 }
-
