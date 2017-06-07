@@ -18,10 +18,10 @@ public init(options : Options)
 ```
 where possible `Options` are:
    - *allowedOrigin* - an enum that configures the `Access-Control-Allow-Origin` CORS server response header. Possible values:
-    - *all* - all origins are allowed. `Access-Control-Allow-Origin` will be set to `*`. This is the default.
-    - *set* - a set of allowed origins.
-    - *origin* - single allowed origin.
-    - *regex* - a regular expression that defines allowed origins.
+        - *all* - all origins are allowed. `Access-Control-Allow-Origin` will be set to `*`. This is the default.
+        - *set* - a set of allowed origins.
+        - *origin* - single allowed origin.
+        - *regex* - a regular expression that defines allowed origins.
    - *credentials* - a boolean value that configures the `Access-Control-Allow-Credentials` CORS header. Is set only if equals to `true`, otherwise the header is not passed. Defaults to `false`.
    - *methods* - an array of methods to be passed in `Access-Control-Allow-Methods` header. The default is `["GET","HEAD","PUT","PATCH","POST","DELETE"]`.
    - *allowedHeaders* - an array of allowed headers to configure the `Access-Control-Allow-Headers` CORS header. If not specified, the headers specified in the request's `Access-Control-Request-Headers` header are passed.
