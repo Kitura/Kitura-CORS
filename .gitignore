@@ -1,4 +1,4 @@
-.build
-build
-Packages
-KituraCORS.xcodeproj
+.build/*
+.build-ubuntu/*
+KituraCORS.xcodeproj/*
+Package.resolved
