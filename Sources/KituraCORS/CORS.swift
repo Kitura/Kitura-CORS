@@ -101,7 +101,7 @@ public class CORS: RouterMiddleware {
                 allowed = true
             }
         case .regex(let regex):
-            if regex.numberOfMatches(in: origin, options: [], range: NSRange(location: 0, length: origin.characters.count)) == 1 {
+            if regex.numberOfMatches(in: origin, options: [], range: NSRange(location: 0, length: origin.count)) == 1 {
                 allowed = true
             }
         default: break
