@@ -21,7 +21,11 @@
 </p>
 
 # Kitura-CORS
-Kitura cross-origin resource sharing ([CORS](https://www.w3.org/TR/cors/)) middleware. A request for a resource (such as an image) outside of your origin (e.g. server) is known as a cross-origin request. CORS allows you to bypass the same-origin restriction, so that resources can be shared between different origins (i.e. servers).
+Kitura-CORS is a cross-origin resource sharing ([CORS](https://www.w3.org/TR/cors/)) middleware. A webpage or script provided by a service may include references to resources or services hosted by another domain - such as a public service or resource. A browser's request for such a resource is an example of a cross-origin request, and is typically prohibited under the [same-origin security policy](https://en.wikipedia.org/wiki/Same-origin_policy).
+
+CORS allows you to bypass the same-origin restriction in a controlled manner, so that resources can be shared between different domains.  A CORS-capable client makes a 'pre-flight' request to the service hosting the resource at domain B with an `Origin` header specifying domain A. That service can then respond to the client with an `Access-Control-Allow-Origin` header which indicates whether access to this resource should be permitted.
+
+You can use CORS middleware in your Kitura application to authorize external services to access resources or APIs that you provide.
 
 ## Swift version
 The latest version of Kitura-CORS requires **Swift 4.1.2**. You can download this version of the Swift binaries by following this [link](https://swift.org/download/). Compatibility with other Swift versions is not guaranteed.
@@ -66,7 +70,7 @@ where possible `Options` are:
    - *allowedHeaders* - an array of allowed headers to configure the `Access-Control-Allow-Headers` CORS header. If not specified, the headers specified in the request's `Access-Control-Request-Headers` header are passed.
    - *maxAge* - an integer to set the `Access-Control-Allow-Max-Age` header. If not set, the header is omitted.
    - *exposedHeaders* - an array of exposed headers to configure the `Access-Control-Expose-Headers` header. If not set, the header is omitted.
-   - *preflightContinue* - a boolean that defines whether to pass the CORS preflight response to the next handler. Defaults to `false`.
+   - *preflightContinue* - a boolean indicating whether a CORS preflight request should be passed on to route handlers to further customize the response. Defaults to `false`, meaning that the CORS middleware will send an appropriate response back to the client immediately.
 
 Please see the [CORS documentation](https://www.w3.org/TR/cors/) for more information about CORS.
 
