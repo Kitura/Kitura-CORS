@@ -8,6 +8,9 @@
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
 
@@ -19,7 +22,13 @@
         <a class="header-link" href="index.html">
           KituraCORS Docs
         </a>
-         (100% documented)
+         (94% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
       </p>
     
         <p class="header-col header-col--secondary">
@@ -49,7 +58,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Enums.html">Enums</a>
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/AllowedOrigins.html">AllowedOrigins</a>
@@ -57,10 +66,21 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Structs.html">Structs</a>
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Structs/Options.html">Options</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/AllowedOriginsRegExType">AllowedOriginsRegExType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:10KituraCORS23AllowedOriginsRegExTypea">AllowedOriginsRegExType</a>
               </li>
             </ul>
           </li>
@@ -71,52 +91,102 @@
         <section class="section">
           <div class="section-content">
             
-            <a href='#kitura-cors' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='kitura-cors'>Kitura-CORS</h1>
+            <p align="center">
+    <a href="http://kitura.io/">
+        <img src="https://raw.githubusercontent.com/IBM-Swift/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
+    </a>
+</p>
 
-<p>Kitura CORS middleware</p>
+<p align="center">
+    <a href="https://ibm-swift.github.io/Kitura-CORS/index.html">
+    <img src="https://img.shields.io/badge/apidoc-KituraCORS-1FBCE4.svg?style=flat" alt="APIDoc">
+    </a>
+    <a href="https://travis-ci.org/IBM-Swift/Kitura-CORS">
+    <img src="https://travis-ci.org/IBM-Swift/Kitura-CORS.svg?branch=master" alt="Build Status - Master">
+    </a>
+    <img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
+    <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
+    <img src="https://img.shields.io/badge/license-Apache2-blue.svg?style=flat" alt="Apache 2">
+    <a href="http://swift-at-ibm-slack.mybluemix.net/">
+    <img src="http://swift-at-ibm-slack.mybluemix.net/badge.svg" alt="Slack Status">
+    </a>
+</p>
+<h1 id='kitura-cors' class='heading'>Kitura-CORS</h1>
 
-<p><a href="https://travis-ci.org/IBM-Swift/Kitura-CORS"><img src="https://travis-ci.org/IBM-Swift/Kitura.svg?branch=master" alt="Build Status - Master"></a>
-<img src="https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat" alt="Mac OS X">
-<img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
-<img src="https://img.shields.io/badge/license-Apache2-blue.svg?style=flat" alt="Apache 2"></p>
-<a href='#summary' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='summary'>Summary</h2>
+<p>Kitura-CORS is a cross-origin resource sharing (<a href="https://www.w3.org/TR/cors/">CORS</a>) middleware. A webpage or script provided by a service may include references to resources or services hosted by another domain - such as a public service or resource. A browser&rsquo;s request for such a resource is an example of a cross-origin request, and is typically prohibited under the <a href="https://en.wikipedia.org/wiki/Same-origin_policy">same-origin security policy</a>.</p>
 
-<p>Kitura <a href="https://www.w3.org/TR/cors/">CORS</a> middleware.</p>
-<a href='#api' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='api'>API</h2>
+<p>CORS allows you to bypass the same-origin restriction in a controlled manner, so that resources can be shared between different domains.  A CORS-capable client makes a &lsquo;pre-flight&rsquo; request to the service hosting the resource at domain B with an <code>Origin</code> header specifying domain A. That service can then respond to the client with an <code>Access-Control-Allow-Origin</code> header which indicates whether access to this resource should be permitted.</p>
+
+<p>You can use CORS middleware in your Kitura application to authorize external services to access resources or APIs that you provide.</p>
+<h2 id='swift-version' class='heading'>Swift version</h2>
+
+<p>The latest version of Kitura-CORS requires <strong>Swift 4.1.2</strong>. You can download this version of the Swift binaries by following this <a href="https://swift.org/download/">link</a>. Compatibility with other Swift versions is not guaranteed.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+<h4 id='add-dependencies' class='heading'>Add dependencies</h4>
+
+<p>Add the <code>Kitura-CORS</code> package to the dependencies within your application’s <code>Package.swift</code> file. Substitute <code>&quot;x.x.x&quot;</code> with the latest <code>Kitura-CORS</code> <a href="https://github.com/IBM-Swift/Kitura-CORS/releases">release</a>.</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/IBM-Swift/Kitura-CORS.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"x.x.x"</span><span class="p">)</span>
+</code></pre>
+
+<p>Add <code>KituraCORS</code> to your target&rsquo;s dependencies:</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">target</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"example"</span><span class="p">,</span> <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"KituraCORS"</span><span class="p">]),</span>
+</code></pre>
+<h4 id='import-package' class='heading'>Import package</h4>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">KituraCORS</span>
+</code></pre>
+<h3 id='using-kitura-cors' class='heading'>Using Kitura-CORS</h3>
 
 <p>To create an instance of Kitura-CORS middleware use:</p>
 <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">options</span> <span class="p">:</span> <span class="kt">Options</span><span class="p">)</span>
 </code></pre>
 
-<p>where possible <code>Options</code> are:
-   - <em>allowedOrigin</em> - an enum that configures the <code>Access-Control-Allow-Origin</code> CORS server response header. Possible values:
-    - <em>all</em> - all origins are allowed. <code>Access-Control-Allow-Origin</code> will be set to <code>*</code>. This is the default.
-    - <em>set</em> - a set of allowed origins.
-    - <em>origin</em> - single allowed origin.
-    - <em>regex</em> - a regular expression that defines allowed origins.
-   - <em>credentials</em> - a boolean value that configures the <code>Access-Control-Allow-Credentials</code> CORS header. Is set only if equals to <code>true</code>, otherwise the header is not passed. Defaults to <code>false</code>.
-   - <em>methods</em> - an array of methods to be passed in <code>Access-Control-Allow-Methods</code> header. The default is <code>[&quot;GET&quot;,&quot;HEAD&quot;,&quot;PUT&quot;,&quot;PATCH&quot;,&quot;POST&quot;,&quot;DELETE&quot;]</code>.
-   - <em>allowedHeaders</em> - an array of allowed headers to configure the <code>Access-Control-Allow-Headers</code> CORS header. If not specified, the headers specified in the request&rsquo;s <code>Access-Control-Request-Headers</code> header are passed.
-   - <em>maxAge</em> - an integer to set the <code>Access-Control-Allow-Max-Age</code> header. If not set, the header is omitted.
-   - <em>exposedHeaders</em> - an array of exposed headers to configure the <code>Access-Control-Expose-Headers</code> header. If not set, the header is omitted.
-   - <em>preflightContinue</em> - a boolean that defines whether to pass the CORS preflight response to the next handler. Defaults to <code>false</code>.</p>
+<p>where possible <code><a href="Structs/Options.html">Options</a></code> are:</p>
 
-<p>Please see <a href="https://www.w3.org/TR/cors/">CORS documentation</a> for details.</p>
-<a href='#example' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='example'>Example</h3>
+<ul>
+<li><em>allowedOrigin</em> - an enum that configures the <code>Access-Control-Allow-Origin</code> CORS server response header. Possible values are:
 
-<p>First create an instance of <code>CORS</code>:</p>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">KituraCORS</span>
+<ul>
+<li><em>all</em> - all origins are allowed. <code>Access-Control-Allow-Origin</code> will be set to <code>*</code>. This is the default.</li>
+<li><em>set</em> - a set of allowed origins.</li>
+<li><em>origin</em> - a single allowed origin.</li>
+<li><em>regex</em> - a regular expression that defines allowed origins.</li>
+</ul></li>
+<li><em>credentials</em> - a boolean value that indicates whether to set the <code>Access-Control-Allow-Credentials</code> CORS header. The header is set only if <em>credentials</em> is <code>true</code>, otherwise the header is not passed. Defaults to <code>false</code>.</li>
+<li><em>methods</em> - an array of methods to be passed in the <code>Access-Control-Allow-Methods</code> header. The default set of methods to be passed is <code>[&quot;GET&quot;,&quot;HEAD&quot;,&quot;PUT&quot;,&quot;PATCH&quot;,&quot;POST&quot;,&quot;DELETE&quot;]</code>.</li>
+<li><em>allowedHeaders</em> - an array of allowed headers to configure the <code>Access-Control-Allow-Headers</code> CORS header. If not specified, the headers specified in the request&rsquo;s <code>Access-Control-Request-Headers</code> header are passed.</li>
+<li><em>maxAge</em> - an integer to set the <code>Access-Control-Allow-Max-Age</code> header. If not set, the header is omitted.</li>
+<li><em>exposedHeaders</em> - an array of exposed headers to configure the <code>Access-Control-Expose-Headers</code> header. If not set, the header is omitted.</li>
+<li><em>preflightContinue</em> - a boolean indicating whether a CORS preflight request should be passed on to route handlers to further customize the response. Defaults to <code>false</code>, meaning that the CORS middleware will send an appropriate response back to the client immediately.</li>
+</ul>
 
-<span class="k">let</span> <span class="nv">options</span> <span class="o">=</span> <span class="kt">Options</span><span class="p">(</span><span class="nv">allowedOrigin</span><span class="p">:</span> <span class="o">.</span><span class="nf">origin</span><span class="p">(</span><span class="s">"www.abc.com"</span><span class="p">),</span> <span class="nv">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">"GET"</span><span class="p">,</span><span class="s">"PUT"</span><span class="p">],</span> <span class="nv">allowedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="s">"Content-Type"</span><span class="p">],</span> <span class="nv">maxAge</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<p>Please see the <a href="https://www.w3.org/TR/cors/">CORS documentation</a> for more information about CORS.</p>
+<h3 id='example' class='heading'>Example</h3>
+
+<p>First create an instance of <code><a href="Classes/CORS.html">CORS</a></code>. In the following example, the resource author has a resource which they would like <a href="http://www.abc.com">http://www.abc.com</a> to be able to access. Only the methods <em>GET</em> and <em>PUT</em> can be used in the actual request, the response can be cached for 5 seconds and only the <em>Content-Type</em> header will be used in the actual request:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Kitura</span>
+<span class="kd">import</span> <span class="kt">KituraCORS</span>
+
+<span class="k">let</span> <span class="nv">options</span> <span class="o">=</span> <span class="kt">Options</span><span class="p">(</span><span class="nv">allowedOrigin</span><span class="p">:</span> <span class="o">.</span><span class="nf">origin</span><span class="p">(</span><span class="s">"http://www.abc.com"</span><span class="p">),</span>
+                      <span class="nv">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">"GET"</span><span class="p">,</span><span class="s">"PUT"</span><span class="p">],</span>
+                      <span class="nv">allowedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="s">"Content-Type"</span><span class="p">],</span>
+                      <span class="nv">maxAge</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+
 <span class="k">let</span> <span class="nv">cors</span> <span class="o">=</span> <span class="kt">CORS</span><span class="p">(</span><span class="nv">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span>
 </code></pre>
 
-<p>Kitura-CORS is <code>RouterMiddleware</code>. To connect it to the desired path use one of the <code>Router</code> methods:</p>
-<pre class="highlight swift"><code><span class="n">router</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="s">"/cors"</span><span class="p">,</span> <span class="nv">middleware</span><span class="p">:</span> <span class="n">cors</span><span class="p">)</span>
+<p>Kitura-CORS implements the <a href="https://ibm-swift.github.io/Kitura/Protocols/RouterMiddleware.html">RouterMiddleware</a> protocol; therefore to connect the middleware to your path you need to use one of the <code>Router</code> methods, for example:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">router</span> <span class="o">=</span> <span class="kt">Router</span><span class="p">()</span>
+<span class="n">router</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="s">"/cors"</span><span class="p">,</span> <span class="nv">middleware</span><span class="p">:</span> <span class="n">cors</span><span class="p">)</span>
 </code></pre>
-<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+<h2 id='api-documentation' class='heading'>API Documentation</h2>
 
-<p>This library is licensed under Apache 2.0. Full license text is available in <a href="LICENSE.txt">LICENSE</a>.</p>
+<p>For more information visit our <a href="https://ibm-swift.github.io/Kitura-CORS/index.html">API reference</a>.</p>
+<h2 id='community' class='heading'>Community</h2>
+
+<p>We love to talk server-side Swift, and Kitura. Join our <a href="http://swift-at-ibm-slack.mybluemix.net/">Slack</a> to meet the team!</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>This library is licensed under Apache 2.0. Full license text is available in <a href="https://github.com/IBM-Swift/Kitura-CORS/blob/master/LICENSE.txt">LICENSE</a>.</p>
 
           </div>
         </section>
@@ -125,8 +195,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2016-09-22)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2018-08-01)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

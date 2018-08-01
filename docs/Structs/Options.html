@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Options Struct Reference</title>
+    <title>Options Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
 
     <a name="//apple_ref/swift/Struct/Options" class="dashAnchor"></a>
 
-    <a title="Options Struct Reference"></a>
+    <a title="Options Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
           KituraCORS Docs
         </a>
-         (100% documented)
+         (94% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
       </p>
     
         <p class="header-col header-col--secondary">
@@ -35,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">KituraCORS Reference</a>
       <img class="carat" src="../img/carat.png" />
-      Options Struct Reference
+      Options Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -50,7 +59,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Enums.html">Enums</a>
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/AllowedOrigins.html">AllowedOrigins</a>
@@ -58,10 +67,21 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Structs.html">Structs</a>
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Options.html">Options</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/AllowedOriginsRegExType">AllowedOriginsRegExType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10KituraCORS23AllowedOriginsRegExTypea">AllowedOriginsRegExType</a>
               </li>
             </ul>
           </li>
@@ -74,7 +94,7 @@
             <h1>Options</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Options</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Options</span></code></pre>
 
                 </div>
               </div>
@@ -91,9 +111,9 @@ See <a href="https://www.w3.org/TR/cors/">CORS manual</a> for more details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vV10KituraCORS7Options13allowedOriginOS_14AllowedOrigins"></a>
+                    <a name="/s:10KituraCORS7OptionsV13allowedOriginAA14AllowedOriginsOvp"></a>
                     <a name="//apple_ref/swift/Property/allowedOrigin" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vV10KituraCORS7Options13allowedOriginOS_14AllowedOrigins">allowedOrigin</a>
+                    <a class="token" href="#/s:10KituraCORS7OptionsV13allowedOriginAA14AllowedOriginsOvp">allowedOrigin</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -108,7 +128,7 @@ See <a href="https://www.w3.org/TR/cors/">CORS manual</a> for more details.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allowedOrigin</span><span class="p">:</span> <span class="kt"><a href="../Enums/AllowedOrigins.html">AllowedOrigins</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allowedOrigin</span><span class="p">:</span> <span class="kt"><a href="../Enums/AllowedOrigins.html">AllowedOrigins</a></span></code></pre>
 
                         </div>
                       </div>
@@ -118,9 +138,9 @@ See <a href="https://www.w3.org/TR/cors/">CORS manual</a> for more details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vV10KituraCORS7Options11credentialsSb"></a>
+                    <a name="/s:10KituraCORS7OptionsV11credentialsSbvp"></a>
                     <a name="//apple_ref/swift/Property/credentials" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vV10KituraCORS7Options11credentialsSb">credentials</a>
+                    <a class="token" href="#/s:10KituraCORS7OptionsV11credentialsSbvp">credentials</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -135,7 +155,7 @@ See <a href="https://www.w3.org/TR/cors/">CORS manual</a> for more details.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">credentials</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">credentials</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -145,9 +165,9 @@ See <a href="https://www.w3.org/TR/cors/">CORS manual</a> for more details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vV10KituraCORS7Options7methodsGSaSS_"></a>
+                    <a name="/s:10KituraCORS7OptionsV7methodsSaySSGvp"></a>
                     <a name="//apple_ref/swift/Property/methods" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vV10KituraCORS7Options7methodsGSaSS_">methods</a>
+                    <a class="token" href="#/s:10KituraCORS7OptionsV7methodsSaySSGvp">methods</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -162,7 +182,7 @@ See <a href="https://www.w3.org/TR/cors/">CORS manual</a> for more details.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">methods</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">methods</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -172,9 +192,9 @@ See <a href="https://www.w3.org/TR/cors/">CORS manual</a> for more details.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vV10KituraCORS7Options14allowedHeadersGSqGSaSS__"></a>
+                    <a name="/s:10KituraCORS7OptionsV14allowedHeadersSaySSGSgvp"></a>
                     <a name="//apple_ref/swift/Property/allowedHeaders" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vV10KituraCORS7Options14allowedHeadersGSqGSaSS__">allowedHeaders</a>
+                    <a class="token" href="#/s:10KituraCORS7OptionsV14allowedHeadersSaySSGSgvp">allowedHeaders</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -191,7 +211,7 @@ header are passed.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allowedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allowedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -201,9 +221,9 @@ header are passed.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vV10KituraCORS7Options6maxAgeGSqSi_"></a>
+                    <a name="/s:10KituraCORS7OptionsV6maxAgeSiSgvp"></a>
                     <a name="//apple_ref/swift/Property/maxAge" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vV10KituraCORS7Options6maxAgeGSqSi_">maxAge</a>
+                    <a class="token" href="#/s:10KituraCORS7OptionsV6maxAgeSiSgvp">maxAge</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,7 +238,7 @@ header are passed.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">maxAge</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">maxAge</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -228,9 +248,9 @@ header are passed.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vV10KituraCORS7Options14exposedHeadersGSqGSaSS__"></a>
+                    <a name="/s:10KituraCORS7OptionsV14exposedHeadersSaySSGSgvp"></a>
                     <a name="//apple_ref/swift/Property/exposedHeaders" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vV10KituraCORS7Options14exposedHeadersGSqGSaSS__">exposedHeaders</a>
+                    <a class="token" href="#/s:10KituraCORS7OptionsV14exposedHeadersSaySSGSgvp">exposedHeaders</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -246,7 +266,7 @@ If not set, the header is omitted.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">exposedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">exposedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -256,9 +276,9 @@ If not set, the header is omitted.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vV10KituraCORS7Options17preflightContinueSb"></a>
+                    <a name="/s:10KituraCORS7OptionsV17preflightContinueSbvp"></a>
                     <a name="//apple_ref/swift/Property/preflightContinue" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vV10KituraCORS7Options17preflightContinueSb">preflightContinue</a>
+                    <a class="token" href="#/s:10KituraCORS7OptionsV17preflightContinueSbvp">preflightContinue</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -273,7 +293,7 @@ If not set, the header is omitted.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">preflightContinue</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">preflightContinue</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -283,9 +303,9 @@ If not set, the header is omitted.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FV10KituraCORS7OptionscFT13allowedOriginOS_14AllowedOrigins11credentialsSb7methodsGSaSS_14allowedHeadersGSqGSaSS__6maxAgeGSqSi_14exposedHeadersGSqGSaSS__17preflightContinueSb_S0_"></a>
+                    <a name="/s:10KituraCORS7OptionsVAcA14AllowedOriginsO13allowedOrigin_Sb11credentialsSaySSG7methodsAHSg0F7HeadersSiSg6maxAgeAJ07exposedJ0Sb17preflightContinuetcfc"></a>
                     <a name="//apple_ref/swift/Method/init(allowedOrigin:credentials:methods:allowedHeaders:maxAge:exposedHeaders:preflightContinue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FV10KituraCORS7OptionscFT13allowedOriginOS_14AllowedOrigins11credentialsSb7methodsGSaSS_14allowedHeadersGSqGSaSS__6maxAgeGSqSi_14exposedHeadersGSqGSaSS__17preflightContinueSb_S0_">init(allowedOrigin:credentials:methods:allowedHeaders:maxAge:exposedHeaders:preflightContinue:)</a>
+                    <a class="token" href="#/s:10KituraCORS7OptionsVAcA14AllowedOriginsO13allowedOrigin_Sb11credentialsSaySSG7methodsAHSg0F7HeadersSiSg6maxAgeAJ07exposedJ0Sb17preflightContinuetcfc">init(allowedOrigin:credentials:methods:allowedHeaders:maxAge:exposedHeaders:preflightContinue:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -295,58 +315,12 @@ If not set, the header is omitted.</p>
                       <div class="abstract">
                         <p>Initialize an instance of <code>Options</code>.</p>
 
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter allowedOrigin: A configuration of the Access-Control-Allow-Origin response header.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter credentials: An indication as to whether to set the 
-                    Access-Control-Allow-Credentials header.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter methods: An array of methods to be passed in the Access-Control-Allow-Methods header.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter allowedHeaders: An array of allowed headers to configure the 
-                    Access-Control-Allow-Headers header.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter maxAge: An integer to set the Access-Control-Allow-Max-Age header.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter exposedHeaders: An array of exposed headers to configure the 
-                    Access-Control-Expose-Headers header.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter preflightContinue: A boolean that defines whether to pass the CORS 
-                    preflight response to the next handler.
-
-</div>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">allowedOrigin</span><span class="p">:</span> <span class="kt"><a href="../Enums/AllowedOrigins.html">AllowedOrigins</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="nv">credentials</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">methods</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"GET"</span><span class="p">,</span><span class="s">"HEAD"</span><span class="p">,</span><span class="s">"PUT"</span><span class="p">,</span><span class="s">"PATCH"</span><span class="p">,</span><span class="s">"POST"</span><span class="p">,</span><span class="s">"DELETE"</span><span class="p">],</span> <span class="nv">allowedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span><span class="o">=</span><span class="kc">nil</span><span class="p">,</span> <span class="nv">maxAge</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span><span class="o">=</span><span class="kc">nil</span><span class="p">,</span> <span class="nv">exposedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span><span class="o">=</span><span class="kc">nil</span><span class="p">,</span> <span class="nv">preflightContinue</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">allowedOrigin</span><span class="p">:</span> <span class="kt"><a href="../Enums/AllowedOrigins.html">AllowedOrigins</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="nv">credentials</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">methods</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"GET"</span><span class="p">,</span><span class="s">"HEAD"</span><span class="p">,</span><span class="s">"PUT"</span><span class="p">,</span><span class="s">"PATCH"</span><span class="p">,</span><span class="s">"POST"</span><span class="p">,</span><span class="s">"DELETE"</span><span class="p">],</span> <span class="nv">allowedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span><span class="o">=</span><span class="kc">nil</span><span class="p">,</span> <span class="nv">maxAge</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span><span class="o">=</span><span class="kc">nil</span><span class="p">,</span> <span class="nv">exposedHeaders</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span><span class="o">=</span><span class="kc">nil</span><span class="p">,</span> <span class="nv">preflightContinue</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -363,7 +337,6 @@ If not set, the header is omitted.</p>
                               <td>
                                 <div>
                                   <p>A configuration of the Access-Control-Allow-Origin response header.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -375,8 +348,8 @@ If not set, the header is omitted.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>An indication as to whether to set the Access-Control-Allow-Credentials header.</p>
-
+                                  <p>An indication as to whether to set the 
+                    Access-Control-Allow-Credentials header.</p>
                                 </div>
                               </td>
                             </tr>
@@ -389,7 +362,6 @@ If not set, the header is omitted.</p>
                               <td>
                                 <div>
                                   <p>An array of methods to be passed in the Access-Control-Allow-Methods header.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -401,8 +373,8 @@ If not set, the header is omitted.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>An array of allowed headers to configure the Access-Control-Allow-Headers header.</p>
-
+                                  <p>An array of allowed headers to configure the 
+                    Access-Control-Allow-Headers header.</p>
                                 </div>
                               </td>
                             </tr>
@@ -415,7 +387,6 @@ If not set, the header is omitted.</p>
                               <td>
                                 <div>
                                   <p>An integer to set the Access-Control-Allow-Max-Age header.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -427,8 +398,8 @@ If not set, the header is omitted.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>An array of exposed headers to configure the Access-Control-Expose-Headers header.</p>
-
+                                  <p>An array of exposed headers to configure the 
+                    Access-Control-Expose-Headers header.</p>
                                 </div>
                               </td>
                             </tr>
@@ -440,8 +411,8 @@ If not set, the header is omitted.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>A boolean that defines whether to pass the CORS preflight response to the next handler.</p>
-
+                                  <p>A boolean that defines whether to pass the CORS 
+                    preflight response to the next handler.</p>
                                 </div>
                               </td>
                             </tr>
@@ -459,8 +430,8 @@ If not set, the header is omitted.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2016-09-22)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2018-08-01)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
