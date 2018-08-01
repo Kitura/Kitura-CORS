@@ -8,6 +8,9 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
 
@@ -20,7 +23,13 @@
         <a class="header-link" href="../index.html">
           KituraCORS Docs
         </a>
-         (100% documented)
+         (94% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
       </p>
     
         <p class="header-col header-col--secondary">
@@ -50,7 +59,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Enums.html">Enums</a>
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/AllowedOrigins.html">AllowedOrigins</a>
@@ -58,10 +67,21 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a class="nav-group-name-link" href="../Structs.html">Structs</a>
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/Options.html">Options</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/AllowedOriginsRegExType">AllowedOriginsRegExType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:10KituraCORS23AllowedOriginsRegExTypea">AllowedOriginsRegExType</a>
               </li>
             </ul>
           </li>
@@ -74,7 +94,7 @@
             <h1>CORS</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CORS</span><span class="p">:</span> <span class="kt">RouterMiddleware</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CORS</span><span class="p">:</span> <span class="kt">RouterMiddleware</span></code></pre>
 
                 </div>
               </div>
@@ -90,9 +110,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10KituraCORS4CORScFT7optionsVS_7Options_S0_"></a>
+                    <a name="/s:10KituraCORS0B0CAcA7OptionsV7options_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(options:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10KituraCORS4CORScFT7optionsVS_7Options_S0_">init(options:)</a>
+                    <a class="token" href="#/s:10KituraCORS0B0CAcA7OptionsV7options_tcfc">init(options:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -102,18 +122,12 @@
                       <div class="abstract">
                         <p>Initialize an instance of <code>CORS</code>.</p>
 
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter options: The options to configure CORS.
-
-</div>
-
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../Structs/Options.html">Options</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -130,7 +144,6 @@
                               <td>
                                 <div>
                                   <p>The options to configure CORS.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -143,9 +156,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC10KituraCORS4CORS6handleFzT7requestC6Kitura13RouterRequest8responseCS1_14RouterResponse4nextFT_T__T_"></a>
+                    <a name="/s:10KituraCORS0B0C6handley0A013RouterRequestC7request_AE0D8ResponseC8responseyyc4nexttKF"></a>
                     <a name="//apple_ref/swift/Method/handle(request:response:next:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC10KituraCORS4CORS6handleFzT7requestC6Kitura13RouterRequest8responseCS1_14RouterResponse4nextFT_T__T_">handle(request:response:next:)</a>
+                    <a class="token" href="#/s:10KituraCORS0B0C6handley0A013RouterRequestC7request_AE0D8ResponseC8responseyyc4nexttKF">handle(request:response:next:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -154,28 +167,6 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Handle an incoming request by setting the CORS headers in the response.</p>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter request: The <code>RouterRequest</code> object used to get information
-                about the request.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    Parameter response: The <code>RouterResponse</code> object used to respond to the
-                  request.
-
-</div>
-
-<div class="aside aside-parameter">
-    <p class="aside-title">Parameter</p>
-    <p>Parameter next: The closure to invoke to enable the Router to check for
-             other handlers or middleware to work with this request.</p>
-
-</div>
-
 <div class="aside aside-throws">
     <p class="aside-title">Throws</p>
     <p>Any <code>ErrorType</code>. If an error is thrown, processing of the request
@@ -189,7 +180,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">handle</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">RouterRequest</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">RouterResponse</span><span class="p">,</span> <span class="nv">next</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">handle</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">RouterRequest</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">RouterResponse</span><span class="p">,</span> <span class="nv">next</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="k">throws</span></code></pre>
 
                         </div>
                       </div>
@@ -205,8 +196,8 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The <code>RouterRequest</code> object used to get information about the request.</p>
-
+                                  <p>The <code>RouterRequest</code> object used to get information
+                about the request.</p>
                                 </div>
                               </td>
                             </tr>
@@ -218,8 +209,8 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The <code>RouterResponse</code> object used to respond to the request.</p>
-
+                                  <p>The <code>RouterResponse</code> object used to respond to the
+                  request.</p>
                                 </div>
                               </td>
                             </tr>
@@ -231,8 +222,8 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The closure to invoke to enable the Router to check for other handlers or middleware to work with this request.</p>
-
+                                  <p>The closure to invoke to enable the Router to check for
+             other handlers or middleware to work with this request.</p>
                                 </div>
                               </td>
                             </tr>
@@ -250,8 +241,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2016-09-22)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2018-08-01)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
