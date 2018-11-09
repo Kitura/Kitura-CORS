@@ -1,9 +1,4 @@
-# Travis CI build file for Kitura-CORS.
-# Kitura runs on OS X and Linux (Ubuntu).
-# See the following URLs for further details on Travis CI
-# https://docs.travis-ci.com/user/customizing-the-build/
-# https://docs.travis-ci.com/user/docker/
-# https://docs.travis-ci.com/user/multi-os/
+# Travis CI build file.
 
 # whitelist (branches that should be built)
 branches:
@@ -11,10 +6,9 @@ branches:
     - master
     - /^issue.*$/
 
-notifications:
-  slack:
-    secure: "R2HbLUbIIExCKsPNaEdZqwKw+X3ITAyjn6qYmrcCAuZ+UREZfEZCoiXrxto6qGz5J1Rb9Hni/9KXBlOIWtTwWM6x8w/A0vm8tlzFVE7+MSCWq+mSJTVtfTVI/A0RMp4/7h09XGGqmDYqLf2X1RVi9yIbQpL3UfIPJgTKw6CJI4cNZ61eXCEj2GPoVYYoVqpQ++/MGO4fZkLVuKVmk5a7KLrnWf2a+fN0bgArNmsIsjxtPZt3p36siCNfnyS+Rs28DehFJbOX99kj8KO6O8kqfj4lMgeFQV9CoLkseRGBN7hVYKEmfl/bZk2Bscc2yWOygoLyWSChGpI1hx6ZHGtWffAb3aI3o2jjP003w5GmuV9Byr62uBtsH79mEpRO94hKiHCeXlDnbvL+7xyXSBLGKEh5Vbxdi8HhaCiKkZyj/ZbQwyjZhv9tBl3SqJjosVxPioaY4mLN/tm6pMFKujQoBerZU73MNn5A+v/C7BJzqtnEkfsDMe8+FK4nhgtlUVQw/f25XOor2iR60a9xOupayqrNft8bE0PYHrO0Q5IcYzhPb5lerk0INScvEbHit4hmQSA/PFR5t5IFDveNarlnUrStSnl0pY1b3c+YCjmcxavMHusyZ7MAW19pCd2GA9MNd5QK1OugLyolByxjMwoX1dH90guvy1TJQ2Dwq8KUB8g="
-
+# the matrix of builds should cover each combination of Swift version
+# and platform that is supported. The version of Swift used is specified
+# by .swift-version, unless SWIFT_SNAPSHOT is specified.
 matrix:
   include:
     - os: linux
@@ -28,6 +22,16 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
+    - os: linux
+      dist: trusty
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE=ubuntu:16.04
+    - os: linux
+      dist: trusty
+      sudo: required
+      services: docker
+      env: DOCKER_IMAGE=ubuntu:18.04
     - os: osx
       osx_image: xcode9.2
       sudo: required
