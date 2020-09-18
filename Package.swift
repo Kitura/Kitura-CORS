@@ -2,7 +2,7 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 /**
- * Copyright IBM Corporation 2016,2017
+ * Copyright IBM Corporation and the Kitura project authors 2016-2020
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMajor(from: "2.1.0")),
+        .package(url: "https://github.com/Kitura/Kitura.git", .upToNextMajor(from: "2.1.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
