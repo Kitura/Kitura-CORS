@@ -34,6 +34,9 @@ public enum AllowedOrigins {
     /// All origins are allowed. Access-Control-Allow-Origin will be set to *.
     case all
 
+    /// Access-Control-Allow-Origin will be set to Origin from `RouterRequest` header.
+    case sameAsOrigin
+    
     /// A set of allowed origins.
     case set(Set<String>)
 

@@ -78,6 +78,8 @@ public class CORS: RouterMiddleware {
         switch options.allowedOrigin {
         case .all:
             headerValue = "*"
+        case .sameAsOrigin:
+            headerValue = requestOrigin
         case .set, .origin, .regex:
             if isAllowed(origin: requestOrigin) {
                 headerValue = requestOrigin
