@@ -62,6 +62,7 @@ public init(options : Options)
 where possible `Options` are:
    - *allowedOrigin* - an enum that configures the `Access-Control-Allow-Origin` CORS server response header. Possible values are:
       - *all* - all origins are allowed. `Access-Control-Allow-Origin` will be set to `*`. This is the default.
+      - *sameAsOrigin* - `Access-Control-Allow-Origin` will be set to Origin from `RouterRequest` header.
       - *set* - a set of allowed origins.
       - *origin* - a single allowed origin.
       - *regex* - a regular expression that defines allowed origins.
