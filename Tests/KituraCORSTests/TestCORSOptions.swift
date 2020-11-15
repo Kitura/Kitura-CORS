@@ -209,25 +209,30 @@ class TestCORSOptions : XCTestCase {
     }
     
     func testSimpleWithSameAsOrigin() {
+        let origin = "http://api.bob.com"
         performServerTest(router) { expectation in
-            self.performRequest("get", path:"/same", callback: {response in
+            self.performRequest("get", path:"/same", callback: { response in
                 XCTAssertNotNil(response, "ERROR!!! ClientRequest response object was nil")
-                guard (response != nil) else {
+                guard let response = response else {
                     return
                 }
+                let expectedValue = origin
+                var resolvedValue: String
+                
                 //origin
-                XCTAssertEqual(response!.statusCode, HTTPStatusCode.OK, "HTTP Status code was \(response!.statusCode)")
-                XCTAssertNotNil(response!.headers["Access-Control-Allow-Origin"], "No allow origin header")
-                guard let originHeader = response!.headers["Access-Control-Allow-Origin"]?.first else {
+                XCTAssertEqual(response.statusCode, HTTPStatusCode.OK, "HTTP Status code was \(response.statusCode)")
+                XCTAssertNotNil(response.headers["Access-Control-Allow-Origin"], "No allow origin header")
+                guard let originHeader = response.headers["Access-Control-Allow-Origin"]?.first else {
                     return
                 }
-                XCTAssertEqual(originHeader, "http://api.bob.com")
+                resolvedValue = originHeader
+                XCTAssertEqual(resolvedValue, expectedValue, "Access-Control-Allow-Origin header should be equal to Origin")
 
                 //credentials
-                XCTAssertNil(response!.headers["Access-Control-Allow-Credentials"], "Allow credentials header shouldn't be set")
+                XCTAssertNil(response.headers["Access-Control-Allow-Credentials"], "Allow credentials header shouldn't be set")
 
                 do {
-                    guard let body = try response!.readString() else {
+                    guard let body = try response.readString() else {
                         XCTFail("No response body")
                         return
                     }
@@ -237,7 +242,7 @@ class TestCORSOptions : XCTestCase {
                     XCTFail("No response body")
                 }
                 expectation.fulfill()
-            }, headers: ["Origin" : "http://api.bob.com"])
+            }, headers: ["Origin" : origin])
         }
     }
 
