@@ -207,6 +207,44 @@ class TestCORSOptions : XCTestCase {
             }, headers: ["Origin" : "http://api.bob.com"])
         }
     }
+    
+    func testSimpleWithSameAsOrigin() {
+        let origin = "http://api.bob.com"
+        performServerTest(router) { expectation in
+            self.performRequest("get", path:"/same", callback: { response in
+                XCTAssertNotNil(response, "ERROR!!! ClientRequest response object was nil")
+                guard let response = response else {
+                    return
+                }
+                let expectedValue = origin
+                var resolvedValue: String
+                
+                //origin
+                XCTAssertEqual(response.statusCode, HTTPStatusCode.OK, "HTTP Status code was \(response.statusCode)")
+                XCTAssertNotNil(response.headers["Access-Control-Allow-Origin"], "No allow origin header")
+                guard let originHeader = response.headers["Access-Control-Allow-Origin"]?.first else {
+                    return
+                }
+                resolvedValue = originHeader
+                XCTAssertEqual(resolvedValue, expectedValue, "Access-Control-Allow-Origin header should be equal to Origin")
+
+                //credentials
+                XCTAssertNil(response.headers["Access-Control-Allow-Credentials"], "Allow credentials header shouldn't be set")
+
+                do {
+                    guard let body = try response.readString() else {
+                        XCTFail("No response body")
+                        return
+                    }
+                    XCTAssertEqual(body, "CORS with options")
+                }
+                catch{
+                    XCTFail("No response body")
+                }
+                expectation.fulfill()
+            }, headers: ["Origin" : origin])
+        }
+    }
 
     static func setupRouter() -> Router {
         let router = Router()
@@ -241,6 +279,16 @@ class TestCORSOptions : XCTestCase {
         let options3 = Options(allowedOrigin: .set(origins))
         router.all("/set", middleware: CORS(options: options3))
         router.get("/set") { _, response, next in
+            do {
+                try response.send("CORS with options").end()
+            }
+            catch {}
+            next()
+        }
+        
+        let options4 = Options(allowedOrigin: .sameAsOrigin)
+        router.all("/same", middleware: CORS(options: options4))
+        router.get("/same") { _, response, next in
             do {
                 try response.send("CORS with options").end()
             }
