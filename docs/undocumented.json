@@ -1,12 +1,12 @@
 {
   "warnings": [
     {
-      "file": "/Users/travis/build/IBM-Swift/Kitura-CORS/Sources/KituraCORS/AllowedOrigins.swift",
+      "file": "/Users/dannys/projects/kitura/Kitura-CORS/Sources/KituraCORS/AllowedOrigins.swift",
       "line": 29,
       "symbol": "AllowedOriginsRegExType",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/travis/build/IBM-Swift/Kitura-CORS"
+  "source_directory": "/Users/dannys/projects/kitura/Kitura-CORS"
 }

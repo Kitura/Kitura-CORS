@@ -1,6 +1,6 @@
 module: KituraCORS
-author: IBM
-github_url: https://github.com/IBM-Swift/Kitura-CORS/
+author: IBM & Kitura Project Authors
+github_url: https://github.com/Kitura/Kitura-CORS/
 
 theme: fullwidth
 clean: true
@@ -11,4 +11,3 @@ readme: README.md
 skip_undocumented: false
 hide_documentation_coverage: false
 
-xcodebuild_arguments: [-project, KituraCORS.xcodeproj, -target, KituraCORS, LIBRARY_SEARCH_PATHS=.build/debug]
